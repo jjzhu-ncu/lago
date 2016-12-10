@@ -1,3 +1,4 @@
+# -*- encoding:utf-8 -*-
 __author__ = 'jjzhu'
 
 from scrapy.spider import Spider
@@ -12,9 +13,9 @@ class AnjukeSpider(Spider):
     ]
     PAGES = 100
     clomn_dict = {
-        '小区': 'estate', '位置': 'location', '年代': 'year', '类型': 'type',
-        '房型': 'house_layout', '面积': 'house_area', '朝向': 'direction', '楼层': 'floor',
-        '装修程度': 'decorate', '房屋单价': 'unit_price', '参考首付': 'downpayment', '参考月供': 'month_pay'
+        u'小区': 'estate', u'位置': 'location', u'年代': 'year', u'类型': 'type',
+        u'房型': 'house_layout', u'面积': 'house_area', u'朝向': 'direction', u'楼层': 'floor',
+        u'装修程度': 'decorate', u'房屋单价': 'unit_price', u'参考首付': u'downpayment', u'参考月供': 'month_pay'
     }
 
     def start_requests(self):
@@ -60,5 +61,5 @@ class AnjukeSpider(Spider):
                 value = self.replace_n_t(value)
                 pass
             item[self.clomn_dict[key]] = value
-            print("%s:\t%s" % (self.clomn_dict[key], value))
+
         yield item
