@@ -45,5 +45,29 @@
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="dist/js/app.min.js"></script>
 
+<script>
+$(document).ready(function() {
+	getPosNum();
+});
+
+
+function getPosNum(){
+	$.ajax({
+		  type: 'POST',
+		  url: 'rest/position/getPosNum/',
+		  data:JSON.stringify({
+			  //p.city,p.companySize,p.financeStage ,p.industryField
+			  //city:"city",
+			  //companySize:"companySize"
+			}),
+		  success: function(result){
+			  alert(result)
+		  },
+		  dataType: "json",
+		  contentType:"application/json"
+	});
+}
+</script>
+
 </body>
 </html>
