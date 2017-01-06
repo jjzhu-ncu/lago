@@ -10,5 +10,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     <!-- 映射map -->
     <mappers>
     	<mapper resource="cn/sfw/zju/lago/system/sqlmap/Position.xml"/>
+    	<mapper resource="cn/sfw/zju/lago/system/sqlmap/Company.xml"/>
     </mappers>
 </configuration>
