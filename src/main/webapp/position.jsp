@@ -35,7 +35,89 @@
 		        <li class="active">Position</li>
 		      </ol>
 		    </section>
-		    <section class="content">职位 lalal</section>
+		    <section class="content">
+		    	<div class="row">
+		    	<div class="col-xs-12">
+		    		作为程序员 每个职位的需求是什么样子的呢？ 
+		    	</div>
+		    	</div>
+		    	<div class="row">
+			    	<div class="col-xs-6">
+	          			<div class="box box-primary">
+	            			<div class="box-header with-border">
+		              			<i class="fa fa-bar-chart-o"></i>
+		              			<h3 class="box-title">Interactive Area Chart</h3>
+		              			<div class="box-tools pull-right">各个职位统计
+					            	<div class="btn-group" id="realtime" data-toggle="btn-toggle">
+					                  <button type="button" class="btn btn-default btn-xs active" data-toggle="on">On</button>
+					                  <button type="button" class="btn btn-default btn-xs" data-toggle="off">Off</button>
+					                </div>
+					            </div>
+	            			</div>
+	           				<div class="box-body">
+	              				<div id="interactive" style="height: 500px;"></div>
+	            			</div>
+	          			</div>
+	       			 </div>	
+	       			 <div class="col-xs-6">
+	          			<div class="box box-primary">
+	            			<div class="box-header with-border">
+		              			<i class="fa fa-bar-chart-o"></i>
+		              			<h3 class="box-title">Interactive Area Chart</h3>
+		              			<div class="box-tools pull-right">各个职位统计
+					            	<div class="btn-group" id="realtime" data-toggle="btn-toggle">
+					                  <button type="button" class="btn btn-default btn-xs active" data-toggle="on">On</button>
+					                  <button type="button" class="btn btn-default btn-xs" data-toggle="off">Off</button>
+					                </div>
+					            </div>
+	            			</div>
+	           				<div class="box-body">
+	              				<div id="avgSalary" style="height: 500px;"></div>
+	            			</div>
+	          			</div>
+	       			 </div>			    	
+		    	</div>
+		    	<div class="row">
+		    		<div class="col-xs-12">
+	          			<div class="box box-primary">
+	            			<div class="box-header with-border">
+		              			<i class="fa fa-bar-chart-o"></i>
+		              			<h3 class="box-title">地图</h3>
+					            <div class="col-xs-2 input-group input-group-sm" style="float:right">
+					                <select id="kind" class="form-control select2"></select>
+					                    <span class="input-group-btn">
+					                      <button type="button" class="btn btn-info btn-flat" onclick="getPosByCity()">Go!</button>
+					                    </span>
+					             </div>	
+	            			</div>
+	           				<div class="box-body">
+	              				<div id="map" style="height: 600px;"></div>
+	            			</div>
+	          			</div>
+	       			 </div>	    	
+		    	</div>
+		    	<div class="row">
+		    		<div class="col-xs-12">
+	          			<div class="box box-primary">
+	            			<div class="box-header with-border">
+		              			<i class="fa fa-bar-chart-o"></i>
+		              			<h3 class="box-title">各个职位在各个城市的分布情况</h3>
+					            <div class="col-xs-2 input-group input-group-sm" style="float:right">
+					                <select id="kind" class="form-control select2"></select>
+					                    <span class="input-group-btn">
+					                      <button type="button" class="btn btn-info btn-flat" onclick="getPosByCity()">Go!</button>
+					                    </span>
+					             </div>	
+	            			</div>
+	           				<div class="box-body">
+	              				<div id="line" style="height: 600px;"></div>
+	            			</div>
+	          			</div>
+	       			 </div>	    	
+		    	</div>
+		    	<div class="row">4</div>
+		    	
+		    </section>
 		</div>
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
@@ -44,7 +126,9 @@
 <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="dist/js/app.min.js"></script>
-
+<script src="plugins/echarts/echarts.js"></script>
+<script src="js/city.js"></script>
+<script src="js/position.js"></script>
 <script>
 $(document).ready(function() {
 	getPosNum();
@@ -61,7 +145,7 @@ function getPosNum(){
 			  //companySize:"companySize"
 			}),
 		  success: function(result){
-			  alert(result)
+			 // alert(result)
 		  },
 		  dataType: "json",
 		  contentType:"application/json"
