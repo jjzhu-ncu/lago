@@ -2,7 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.sfw.zju.lago.system.dao.PositionDao">
 	 <select id="getPositionNum" parameterType="map" resultType="hashmap" statementType="STATEMENT">
-	 	select p.kind ,p.city,p.companySize,p.financeStage,p.industryField,SUM(p.id) as total from spider_position p 
+	 	select p.kind ,p.city,p.companySize,p.financeStage,p.industryField,count(p.id) as total,
+	 	round((SUM(p.maxSalary)+SUM(p.minSalary))/COUNT(p.id)) as avgSalary
+	 	from spider_position p 
 		GROUP BY p.kind  
 		<if test="city != null">
     		,${city}
@@ -18,4 +20,18 @@
   		</if>
 		ORDER BY total DESC;
 	 </select>
+	 
+	 <select id="getPositionNumByCity" parameterType="map" resultType="hashmap">
+	 	SELECT p.city,COUNT(p.id) as totalNum FROM spider_position p WHERE p.kind=#{kind} GROUP BY p.city
+	 </select>
+	 
+	 <select id="getCitys" resultType="string">
+	 	SELECT city FROM city
+	 </select>
+	 
+	 <select id="getKAS" parameterType="map" resultType="hashmap">
+	 	SELECT p.city, p.kind, IFNULL(SUM(maxSalary+minSalary)/COUNT(*),0) as zg FROM spider_position p WHERE p.city=#{city} AND p.kind=#{kind}
+	 	<!--  SELECT city, kind, ifnull(round(SUM(maxSalary+minSalary)/COUNT(*)),0) as zg FROM spider_position WHERE city=#{city} AND kind=#{kind} -->
+	 </select>
+	 
 </mapper>

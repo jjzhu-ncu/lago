@@ -3,6 +3,7 @@ package cn.sfw.zju.lago.system.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,4 +18,19 @@ public class PositionService {
 		return positionDao.getPositionNum(parmMap);
 	}
 	
+	public List<Map<String, Object>> getPositionNumByCity(Map<String, Object> parmMap){
+		return positionDao.getPositionNumByCity(parmMap);
+	}
+	
+	public List<Map<String, Integer>> getKindAvgSalaryByCity(String kind){
+		return positionDao.getKindAvgSalaryByCity(kind);
+	}
+	
+	public List<String> getCitys(){
+		return positionDao.getCitys();
+	}
+	
+	public Map<String, Object> getKAS(Map<String, String> map){
+		return positionDao.getKAS(map);
+	}
 }
