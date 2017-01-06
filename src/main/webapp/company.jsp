@@ -33,18 +33,48 @@
 			<jsp:include page="toolbar.jsp"></jsp:include>
 			<div class="content-wrapper">
 				<section class="content-header">
-					<h1>
-						Company<small>analysis</small>
-					</h1>
-					<ol class="breadcrumb">
-						<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-						<li class="active">Company</li>
-					</ol>
-				</section>
-				<section class="content">
-					<div class="row" >
-						
-					</div>
+				
+				<div class="row">
+		    		<div class="col-xs-12">
+	          			<div class="box box-primary">
+	            			<div class="box-header with-border">
+		              			<i class="fa fa-bar-chart-o"></i>
+		              			<h3 class="box-title">不同融资阶段对职位的需求量</h3>
+					            <div class="col-xs-2 input-group input-group-sm" style="float:right">
+					                <select id="kind" class="form-control select2"></select>
+					                    <span class="input-group-btn">
+					                      <button type="button" class="btn btn-info btn-flat" onclick="getNeedByPos()">Go!</button>
+					                    </span>
+					             </div>	
+	            			</div>
+	           				<div class="box-body">
+	              				<div id="timeCount" style="height: 600px;"></div>
+	            			</div>
+	          			</div>
+	       			 </div>	    	
+		    	</div>
+				
+				<div class="row">
+		    		<div class="col-xs-12">
+	          			<div class="box box-primary">
+	            			<div class="box-header with-border">
+		              			<i class="fa fa-bar-chart-o"></i>
+		              			<h3 class="box-title">不同融资阶段每日的职位发布量</h3>
+					            <div class="col-xs-2 input-group input-group-sm" style="float:right">
+					                <select id="kind" class="form-control select2"></select>
+					                    <span class="input-group-btn">
+					                      <button type="button" class="btn btn-info btn-flat" onclick="getNeedByPos()">Go!</button>
+					                    </span>
+					             </div>	
+	            			</div>
+	           				<div class="box-body">
+	              				<div id="cmpStage" style="height: 600px;"></div>
+	            			</div>
+	          			</div>
+	       			 </div>	    	
+		    	</div>
+		    	
+		    	
 				</section>
 			</div>
 			<jsp:include page="footer.jsp"></jsp:include>
@@ -55,59 +85,10 @@
 	<script src="bootstrap/js/bootstrap.min.js"></script>
 	<script src="dist/js/app.min.js"></script>
 	<script src="http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+	<script src="js/common.js"></script>
+	<script src="js/company/company.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function() {
-			getPosNum();
-		});
-
-		function getPosNum() {
-			$.ajax({
-				type : 'POST',
-				url : 'rest/company/getByCmpFncStage/',
-				data : JSON.stringify({
-				//p.city,p.companySize,p.financeStage ,p.industryField
-				//stage:"初创型(未融资)",
-				//companySize:"companySize"
-				}),
-				success : function(result) {
-					var myChart = echarts.init(document.getElementById(1));
-					var data = result['data'];
-					var stages = new Array(data.length);
-					var counts = new Array(data.length);
-					for(var i = 0; i < data.length; i ++){
-						stages[i] = data[i]['financeStage'];
-						counts[i] = data[i]['total']
-					}
-					var option = {
-						tooltip : {
-							show : true
-						},
-						legend : {
-							data : [ 'Java' ]
-						},
-						
-						xAxis : [ {
-							type : 'category',
-							data : stages,
-							axisLabel: {
-								rotate: -30,
-							}
-						} ],
-						yAxis : [ {
-							type : 'value'
-						} ],
-						series : [ {
-							"name" : "销量",
-							"type" : "bar",
-							"data" : counts
-						} ]
-					};
-					myChart.setOption(option);
-				},
-				dataType : "json",
-				contentType : "application/json"
-			});
-		}
+		
 	</script>
 </body>
 </html>

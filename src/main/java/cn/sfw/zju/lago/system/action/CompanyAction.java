@@ -33,4 +33,15 @@ public class CompanyAction {
 		m.setResponseCode(ResponseCode.SUCCESS);
 		return m;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/getPosCountByDateAndFncStage", method=RequestMethod.POST)
+	public Message getPosCountByDateAndFncStage(HttpServletRequest req, HttpServletResponse res,@RequestBody Map<String,Object> parmMap){
+		
+		List<Map<String, Object>> result = this.cmpService.getPosCountByDateAndFncStage(parmMap);
+		Message m = new Message();
+		m.setData(result);
+		m.setResponseCode(ResponseCode.SUCCESS);
+		return m;
+	}
 }

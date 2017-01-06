@@ -7,5 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CompanyDao {
+	
 	public List<Map<String, Object>> getByCmpFncStage(Map<String, Object> parmMap);
+	public List<Map<String, Object>> getPosCountByDateAndFncStage(Map<String, Object> parmMap);
 }
