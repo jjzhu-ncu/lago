@@ -79,7 +79,7 @@ function getPosByCity(){
 		  dataType: "json",
 		  contentType:"application/json"
 	});
-}
+} 
 
 function getKindAvgSalaryByCity(){
 	var kind="JAVA"
