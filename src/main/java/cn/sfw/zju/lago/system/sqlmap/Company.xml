@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.sfw.zju.lago.system.dao.CompanyDao">
+	 <select id="getByCmpFncStage" parameterType="map" resultType="hashmap">
+	 	select p.kind,  p.financeStage, count(*) as total from spider_position p where p.kind= #{kind} GROUP BY p.financeStage ORDER BY total DESC;
+	 </select>
+	 <select id="getPosCountByDateAndFncStage" parameterType="map" resultType="hashmap">
+	 	select createTime_d as t , stage, count(*) as count from spider_position group by createTime_d ,stage order by createTime_d desc;
+	 </select>
+</mapper>
