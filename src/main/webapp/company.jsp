@@ -40,22 +40,31 @@
 	            			<div class="box-header with-border">
 		              			<i class="fa fa-bar-chart-o"></i>
 		              			<h3 class="box-title">不同融资阶段对职位的需求量</h3>
-					            <div class="col-xs-2 input-group input-group-sm" style="float:right">
-					                <select id="kind" class="form-control select2"></select>
-					                    <span class="input-group-btn">
-					                      <button type="button" class="btn btn-info btn-flat" onclick="getNeedByPos()">Go!</button>
-					                    </span>
-					             </div>	
+					            
 	            			</div>
 	           				<div class="box-body">
-	              				<div id="timeCount" style="height: 600px;"></div>
+	              				<div id="timeCount" style="height: 500px;"></div>
 	            			</div>
 	          			</div>
 	       			 </div>	    	
 		    	</div>
+		    	<div class = 'row'>
+		    	<div class="col-xs-12">
+	          			<div class="box box-primary">
+	            			<div class="box-header with-border">
+		              			<i class="fa fa-bar-chart-o"></i>
+		              			<h3 class="box-title">不同融资阶段每日的职位发布量</h3>
+					            
+	            			</div>
+	           				<div class="box-body">
+	              				<div id="brokenLine" style="height: 400px;"></div>
+	            			</div>
+	          			</div>
+	       			 </div>	    
+		    	</div>
 				
 				<div class="row">
-		    		<div class="col-xs-12">
+		    		<div class="col-xs-6">
 	          			<div class="box box-primary">
 	            			<div class="box-header with-border">
 		              			<i class="fa fa-bar-chart-o"></i>
@@ -68,10 +77,12 @@
 					             </div>	
 	            			</div>
 	           				<div class="box-body">
-	              				<div id="cmpStage" style="height: 600px;"></div>
+	              				<div id="cmpStage" style="height: 400px;"></div>
 	            			</div>
 	          			</div>
-	       			 </div>	    	
+	       			 </div>	 
+	       			 
+	       			   	
 		    	</div>
 		    	
 		    	
