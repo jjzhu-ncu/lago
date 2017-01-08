@@ -55,4 +55,9 @@ public class CompanyService {
 		}
 		return r;
 	}
+	
+	public List<Map<String, Object>> getCountBySize(){
+		return cmpDao.getCountBySize();
+	}
+	
 }

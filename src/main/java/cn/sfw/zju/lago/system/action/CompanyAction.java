@@ -44,4 +44,15 @@ public class CompanyAction {
 		m.setResponseCode(ResponseCode.SUCCESS);
 		return m;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/getCountBySize" ,method=RequestMethod.POST)
+	public Message RequestMethod(HttpServletRequest req, HttpServletResponse res){
+		List<Map<String, Object>> result=cmpService.getCountBySize();
+		Message m = new Message();
+		m.setData(result);
+		m.setResponseCode(ResponseCode.SUCCESS);
+		return m;	
+	}
+	
 }

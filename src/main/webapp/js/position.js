@@ -2,7 +2,7 @@ $(document).ready(function() {
 	getKind();
 	getPosByKind();
 	getPosByCity();
-	getKindAvgSalaryByCity();
+	//getKindAvgSalaryByCity();
 });
 
 

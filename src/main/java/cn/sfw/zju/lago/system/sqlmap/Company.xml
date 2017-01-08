@@ -7,4 +7,8 @@
 	 <select id="getPosCountByDateAndFncStage" parameterType="map" resultType="hashmap">
 	 	select createTime_d as t , stage, count(*) as count from spider_position group by createTime_d ,stage order by createTime_d desc;
 	 </select>
+	 
+	 <select id="getCountBySize" resultType="hashmap">
+	 SELECT companySize, COUNT(*) AS size FROM spider_position GROUP BY companySize
+	 </select>
 </mapper>

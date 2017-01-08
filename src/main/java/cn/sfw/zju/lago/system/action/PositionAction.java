@@ -52,14 +52,36 @@ public class PositionAction {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value = "/getAll/", method = RequestMethod.POST)
+	public Message getAll(HttpServletRequest request,HttpServletResponse response,@RequestBody Map<String,Object> parmMap) {
+		Message message = new Message();
+		List<Map<String, Object>> result = positionService.getAll(parmMap);
+		message.setData(result);
+		message.setResponseCode(ResponseCode.SUCCESS);
+		return message;
+	}
+	
+	
+	@ResponseBody
 	@RequestMapping(value = "/getPosKind/", method = RequestMethod.POST)
-	public Message getPosKind(HttpServletRequest request,HttpServletResponse response,@RequestBody Map<String,Object> parmMap) {
+	public Message getPosKind(HttpServletRequest request,HttpServletResponse response) {
 		Message message = new Message();
 		List<String> result = kindService.getPositionKind();
 		message.setData(result);
 		message.setResponseCode(ResponseCode.SUCCESS);
 		return message;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/getPosCity/", method = RequestMethod.POST)
+	public Message getPosCity(HttpServletRequest request,HttpServletResponse response) {
+		Message message = new Message();
+		List<String> result = positionService.getCitys();
+		message.setData(result);
+		message.setResponseCode(ResponseCode.SUCCESS);
+		return message;
+	}
+	
 	
 	/**
 	 * 有问题 为什么是空
@@ -74,12 +96,13 @@ public class PositionAction {
 		Message message = new Message();
 		//List<String> kinds = kindService.getPositionKind();
 		String[] kinds={"Java","Hadoop"};
-		List<String> citys=positionService.getCitys(); 
+		//List<String> citys=positionService.getCitys(); 
+		String[] citys={"北京","上海","杭州","深圳","南京"};
 		Map<String, List<Double>> salarys= new HashMap<>();
 		for(String kind: kinds){
 			List<Double> mylist=new ArrayList<Double>();
 			for(String city:citys){
-				Map<String, String> queryMap= new HashMap<>();
+				Map<String, Object> queryMap= new HashMap<>();
 				queryMap.put("kind", kind);
 				queryMap.put("city", city);
 				Map<String, Object> item=positionService.getKAS(queryMap);

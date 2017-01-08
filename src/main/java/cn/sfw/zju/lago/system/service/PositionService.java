@@ -30,7 +30,12 @@ public class PositionService {
 		return positionDao.getCitys();
 	}
 	
-	public Map<String, Object> getKAS(Map<String, String> map){
+	public Map<String, Object> getKAS(Map<String, Object> map){
 		return positionDao.getKAS(map);
 	}
+	
+	public List<Map<String, Object>> getAll(Map<String, Object> parmMap){
+		return positionDao.getAll(parmMap);
+	}
+	
 }
