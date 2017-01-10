@@ -73,18 +73,22 @@
 	          			</div>
 	       			 </div>	     
 	       			 
-	       			 <div class="col-xs-12">
-	          			<div class="box box-primary">
-	            			<div class="box-header with-border">
-		              			<i class="fa fa-bar-chart-o"></i>
-		              			<h3 class="box-title">不同职位需求量</h3>
-	            			</div>
-	           				<div class="box-body">
-	              				<div id="pie1" style="height: 400px;"></div>
-	            			</div>
-	          			</div>
-	       			 </div>	  	
+	       			  	
 		    	</div>
+		    	<div class='row'>
+						<div class="col-xs-12">
+							<div class="box box-primary">
+								<div class="box-header with-border">
+									<i class="fa fa-bar-chart-o"></i>
+									<h3 class="box-title">不同融资阶段每日的职位发布量</h3>
+									
+								</div>
+								<div class="box-body">
+									<div id="pubCountTime" style="height: 400px;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
 		    </section>
 		</div>
 		<jsp:include page="footer.jsp"></jsp:include>

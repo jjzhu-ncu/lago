@@ -2,7 +2,7 @@ $(document).ready(function() {
 	getNeedByPos();
 	getKind();
 	getPosCountByDateAndFncStage();
-	getPosPubTime();
+	//getPosPubTime();
 	posPubCountByCityAndDate();
 });
 function getNeedByPos() {

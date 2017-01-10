@@ -92,6 +92,7 @@ public class PositionAction {
 		List<Map<String, Object>> result = positionService.getASByComSize();
 		
 		for(Map<String, Object> map:result){
+			
 			if(map.get("kind").equals("Java")) map.replace("kind", (Object)0);
 			else if(map.get("kind").equals("Python")) map.replace("kind", (Object)1);
 			else if(map.get("kind").equals("PHP")) map.replace("kind", (Object)2);
