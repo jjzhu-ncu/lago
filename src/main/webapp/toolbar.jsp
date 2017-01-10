@@ -24,9 +24,11 @@
 		        <li class="header">HEADER</li>
 		        <li><a id="dashboard" href="dashboard.jsp"><i class="fa fa-link"></i> <span>DashBoard</span></a></li>
 		        <li><a id="position" href="position.jsp"><i class="fa fa-link"></i> <span>Position</span></a></li>
+		        <li><a id="company" href="company.jsp"><i class="fa fa-link"></i> <span>Company</span></a></li>
 		        <li><a id="salary" href="salary.jsp"><i class="fa fa-link"></i> <span>Salary</span></a></li>
-		        <li><a id="city" href="city.jsp"><i class="fa fa-link"></i> <span>City</span></a></li>
-		        <li class="treeview">
+		        <!-- <li><a id="salary" href="salary.jsp"><i class="fa fa-link"></i> <span>Salary</span></a></li>
+		        <li><a id="city" href="city.jsp"><i class="fa fa-link"></i> <span>City</span></a></li> -->
+		        <!-- <li class="treeview">
 		          <a href="#"><i class="fa fa-link"></i> <span>Company</span>
 		            <span class="pull-right-container">
 		              <i class="fa fa-angle-left pull-right"></i>
@@ -36,7 +38,7 @@
 		            <li><a href="company.jsp">Industry Field</a></li>
 		            <li><a href="company.jsp">Finance Stage</a></li>
 		          </ul>
-		        </li>
+		        </li> -->
 		      </ul>
     		</section>
   		</aside>

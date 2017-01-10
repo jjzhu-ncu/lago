@@ -16,4 +16,8 @@
 	 		  group by  h, city;
 	 </select>
 	 
+	 
+	 <select id="getCountBySize" resultType="hashmap">
+	 SELECT companySize, COUNT(*) AS size FROM spider_position GROUP BY companySize
+	 </select>
 </mapper>

@@ -66,4 +66,9 @@ public class CompanyService {
 		return this.cmpDao.posPubCountByCityAndDate(paramMap);
 
 	}
+	
+	public List<Map<String, Object>> getCountBySize(){
+		return cmpDao.getCountBySize();
+	}
+	
 }

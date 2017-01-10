@@ -12,4 +12,6 @@ public interface CompanyDao {
 	public List<Map<String, Object>> getPosCountByDateAndFncStage(Map<String, Object> parmMap);
 	public List<Map<String, Object>> posPubCountByHour(Map<String, Object> parmMap);
 	public List<Map<String, Object>> posPubCountByCityAndDate(Map<String, Object> parmMap);
+	
+	public List<Map<String, Object>> getCountBySize();
 }

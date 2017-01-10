@@ -18,12 +18,18 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/app.min.js"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
   
   	<div class="main-wrapper">		
-		<jsp:include page="header.jsp"></jsp:include>
+  		<jsp:include page="dashboard.jsp"></jsp:include>
+		<%-- <jsp:include page="header.jsp"></jsp:include>
 		<jsp:include page="toolbar.jsp"></jsp:include>
 		<div class="content-wrapper">
 		    <section class="content-header">
@@ -35,18 +41,10 @@
 		    </section>
 		    <section class="content">显示内容...</section>
 		</div>
-		<jsp:include page="footer.jsp"></jsp:include>
+		<jsp:include page="footer.jsp"></jsp:include> --%>
 	</div>
   
 </div>
-
-<!-- jQuery 2.2.3 -->
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/app.min.js"></script>
-
 </body>
 </html>
 

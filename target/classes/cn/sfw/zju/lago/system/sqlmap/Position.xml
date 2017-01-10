@@ -21,17 +21,31 @@
 		ORDER BY total DESC;
 	 </select>
 	 
+	 <select id="getAll" parameterType="map" resultType="hashmap">
+	 	SELECT positionName,companyFullName,companySize,city,industryField,financeStage,education,salary,workYear 
+	 	FROM spider_position 
+	 	WHERE kind LIKE '%' || #{kind} || '%' AND city LIKE '%' || #{city} || '%'  
+	 	LIMIT 1000
+	 </select>
+	 
 	 <select id="getPositionNumByCity" parameterType="map" resultType="hashmap">
 	 	SELECT p.city,COUNT(p.id) as totalNum FROM spider_position p WHERE p.kind=#{kind} GROUP BY p.city
 	 </select>
 	 
-	 <select id="getCitys" resultType="string">
+	 <select id="getCitys" resultType="string" statementType="STATEMENT">
 	 	SELECT city FROM city
 	 </select>
 	 
-	 <select id="getKAS" parameterType="map" resultType="hashmap">
-	 	SELECT p.city, p.kind, IFNULL(SUM(maxSalary+minSalary)/COUNT(*),0) as zg FROM spider_position p WHERE p.city=#{city} AND p.kind=#{kind}
+	 <select id="getKAS" parameterType="map" resultType="hashmap" >
+	 	SELECT p.city, p.kind, IFNULL(SUM(maxSalary+minSalary)/COUNT(*),0) as zg FROM spider_position p 
+	 	WHERE kind LIKE '%' || #{kind} || '%' AND city LIKE '%' || #{city} || '%' 
 	 	<!--  SELECT city, kind, ifnull(round(SUM(maxSalary+minSalary)/COUNT(*)),0) as zg FROM spider_position WHERE city=#{city} AND kind=#{kind} -->
+	 </select>
+	 
+	 <select id="getASByComSize"  resultType="hashmap">
+	 	SELECT s.kind,s.companySize ,ROUND(SUM(s.maxSalary+s.minSalary)/COUNT(*)) as total FROM spider_position s 
+		WHERE kind in ("Java","Python","PHP","C++",".NET","Hadoop")
+		GROUP BY s.companySize ,s.kind
 	 </select>
 	 
 </mapper>

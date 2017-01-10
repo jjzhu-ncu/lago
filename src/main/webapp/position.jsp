@@ -19,6 +19,12 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+  <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="dist/js/app.min.js"></script>
+<script src="plugins/echarts/echarts.js"></script>
+<script src="js/city.js"></script>
+<script src="js/position.js"></script>
 </head>
 
 
@@ -96,7 +102,7 @@
 	          			</div>
 	       			 </div>	    	
 		    	</div>
-		    	<div class="row">
+		    	<!-- <div class="row">
 		    		<div class="col-xs-12">
 	          			<div class="box box-primary">
 	            			<div class="box-header with-border">
@@ -105,7 +111,7 @@
 					            <div class="col-xs-2 input-group input-group-sm" style="float:right">
 					                <select id="kind" class="form-control select2"></select>
 					                    <span class="input-group-btn">
-					                      <button type="button" class="btn btn-info btn-flat" onclick="getPosByCity()">Go!</button>
+					                      <button type="button" class="btn btn-info btn-flat" onclick="getKindAvgSalaryByCity()">Go!</button>
 					                    </span>
 					             </div>	
 	            			</div>
@@ -114,8 +120,7 @@
 	            			</div>
 	          			</div>
 	       			 </div>	    	
-		    	</div>
-		    	<div class="row">4</div>
+		    	</div> -->
 		    	
 		    </section>
 		</div>
@@ -123,12 +128,6 @@
 	</div>
 </div>
 
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="dist/js/app.min.js"></script>
-<script src="plugins/echarts/echarts.js"></script>
-<script src="js/city.js"></script>
-<script src="js/position.js"></script>
 <script>
 $(document).ready(function() {
 	getPosNum();
