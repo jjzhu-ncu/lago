@@ -92,17 +92,17 @@ public class PositionAction {
 		List<Map<String, Object>> result = positionService.getASByComSize();
 		
 		for(Map<String, Object> map:result){
-			if(map.get("kind").equals("Java")) map.replace("kind", 0);
-			else if(map.get("kind").equals("Python")) map.replace("kind", 1);
-			else if(map.get("kind").equals("PHP")) map.replace("kind", 2);
-			else if(map.get("kind").equals("C++")) map.replace("kind", 3);
-			else if(map.get("kind").equals(".NET")) map.replace("kind", 4);
-			else if(map.get("kind").equals("Hadoop")) map.replace("kind", 5);	
-			if(map.get("companySize").equals("15-50人")) map.replace("companySize", 0);
-			if(map.get("companySize").equals("50-150人")) map.replace("companySize", 1);
-			if(map.get("companySize").equals("150-500人")) map.replace("companySize", 2);
-			if(map.get("companySize").equals("500-2000人")) map.replace("companySize", 3);
-			if(map.get("companySize").equals("2000人以上")) map.replace("companySize", 4);
+			if(map.get("kind").equals("Java")) map.replace("kind", (Object)0);
+			else if(map.get("kind").equals("Python")) map.replace("kind", (Object)1);
+			else if(map.get("kind").equals("PHP")) map.replace("kind", (Object)2);
+			else if(map.get("kind").equals("C++")) map.replace("kind", (Object)3);
+			else if(map.get("kind").equals(".NET")) map.replace("kind", (Object)4);
+			else if(map.get("kind").equals("Hadoop")) map.replace("kind", (Object)5);	
+			if(map.get("companySize").equals("15-50人")) map.replace("companySize", (Object)0);
+			if(map.get("companySize").equals("50-150人")) map.replace("companySize", (Object)1);
+			if(map.get("companySize").equals("150-500人")) map.replace("companySize", (Object)2);
+			if(map.get("companySize").equals("500-2000人")) map.replace("companySize", (Object)3);
+			if(map.get("companySize").equals("2000人以上")) map.replace("companySize", (Object)4);
 		}
 		Map<String, Object> data=new HashMap<String, Object>();
 		data.put("kinds", kinds);
