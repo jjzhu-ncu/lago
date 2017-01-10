@@ -103,7 +103,8 @@ function initBubble(elem,xData,yData,data){
 	        height: (100 / 7 - 10) + '%',
 	        axisLabel: {
 	            interval: 2
-	        }
+	        },
+	    	text: hours
 	    });
 	    option.series.push({
 	        singleAxisIndex: idx,
