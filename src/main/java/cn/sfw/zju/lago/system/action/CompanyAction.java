@@ -44,4 +44,26 @@ public class CompanyAction {
 		m.setResponseCode(ResponseCode.SUCCESS);
 		return m;
 	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value="/posPubCountByHour", method=RequestMethod.POST)
+	public Message posPubCountByHour(HttpServletRequest req, HttpServletResponse res, @RequestBody Map<String, Object> parmMap){
+		
+		Message msg = new Message();
+		msg.setData(this.cmpService.posPubCountByHour(parmMap));
+		msg.setResponseCode(ResponseCode.SUCCESS);
+		return msg;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/posPubCountByCityAndDate", method=RequestMethod.POST)
+	public Message posPubCountByCityAndDate(HttpServletRequest req, HttpServletResponse res, @RequestBody Map<String, Object> parmMap){
+		
+		Message msg = new Message();
+		msg.setData(this.cmpService.posPubCountByCityAndDate(parmMap));
+		msg.setResponseCode(ResponseCode.SUCCESS);
+		return msg;
+	}
+	
 }

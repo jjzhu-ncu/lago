@@ -7,4 +7,13 @@
 	 <select id="getPosCountByDateAndFncStage" parameterType="map" resultType="hashmap">
 	 	select createTime_d as t , stage, count(*) as count from spider_position group by createTime_d ,stage order by createTime_d desc;
 	 </select>
+	 <select id="posPubCountByHour" parameterType="map" resultType="hashmap">
+	 	select h, count(*) as count from (select hour(str_to_date(createTime, '%Y-%m-%d %H:%i:%s')) as h from spider_position)tmp group by h order by h;
+	 </select>
+	 <select id="posPubCountByCityAndDate" parameterType="map" resultType="hashmap">
+	 	select city, createTime, count(*) as count, hour(str_to_date(createTime, '%Y-%m-%d %H:%i:%s')) as h
+	 		 from spider_position where  createTime_d = #{time} and city = "上海" or city = "北京" or city = "杭州" or city = "深圳"  
+	 		  group by  h, city;
+	 </select>
+	 
 </mapper>
