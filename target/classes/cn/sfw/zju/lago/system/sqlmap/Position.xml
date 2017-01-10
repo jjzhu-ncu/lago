@@ -37,9 +37,15 @@
 	 </select>
 	 
 	 <select id="getKAS" parameterType="map" resultType="hashmap" >
-	 	SELECT p.city, p.kind, IFNULL(SUM(maxSalary+minSalary)/COUNT(*),0) as zg FROM spider_position p WHERE p.city=${city} AND p.kind=${kind}
+	 	SELECT p.city, p.kind, IFNULL(SUM(maxSalary+minSalary)/COUNT(*),0) as zg FROM spider_position p 
+	 	WHERE kind LIKE '%' || #{kind} || '%' AND city LIKE '%' || #{city} || '%' 
 	 	<!--  SELECT city, kind, ifnull(round(SUM(maxSalary+minSalary)/COUNT(*)),0) as zg FROM spider_position WHERE city=#{city} AND kind=#{kind} -->
 	 </select>
 	 
+	 <select id="getASByComSize"  resultType="hashmap">
+	 	SELECT s.kind,s.companySize ,ROUND(SUM(s.maxSalary+s.minSalary)/COUNT(*)) as total FROM spider_position s 
+		WHERE kind in ("Java","Python","PHP","C++",".NET","Hadoop")
+		GROUP BY s.companySize ,s.kind
+	 </select>
 	 
 </mapper>

@@ -83,6 +83,37 @@ public class PositionAction {
 	}
 	
 	
+	@ResponseBody
+	@RequestMapping(value = "/getASByComSize/", method = RequestMethod.POST)
+	public Message getASByComSize(HttpServletRequest request,HttpServletResponse response) {
+		Message message = new Message();
+		String[] kinds={"Java","Python","PHP","C++",".NET","Hadoop"};
+		String[] companySizes={"15-50人","50-150人","150-500人","500-2000人","2000人以上"};
+		List<Map<String, Object>> result = positionService.getASByComSize();
+		
+		for(Map<String, Object> map:result){
+			if(map.get("kind").equals("Java")) map.replace("kind", 0);
+			else if(map.get("kind").equals("Python")) map.replace("kind", 1);
+			else if(map.get("kind").equals("PHP")) map.replace("kind", 2);
+			else if(map.get("kind").equals("C++")) map.replace("kind", 3);
+			else if(map.get("kind").equals(".NET")) map.replace("kind", 4);
+			else if(map.get("kind").equals("Hadoop")) map.replace("kind", 5);	
+			if(map.get("companySize").equals("15-50人")) map.replace("companySize", 0);
+			if(map.get("companySize").equals("50-150人")) map.replace("companySize", 1);
+			if(map.get("companySize").equals("150-500人")) map.replace("companySize", 2);
+			if(map.get("companySize").equals("500-2000人")) map.replace("companySize", 3);
+			if(map.get("companySize").equals("2000人以上")) map.replace("companySize", 4);
+		}
+		Map<String, Object> data=new HashMap<String, Object>();
+		data.put("kinds", kinds);
+		data.put("companySizes", companySizes);
+		data.put("result", result);
+		message.setData(data);
+		message.setResponseCode(ResponseCode.SUCCESS);
+		return message;
+	}
+	
+	
 	/**
 	 * 有问题 为什么是空
 	 * @param request
@@ -95,9 +126,9 @@ public class PositionAction {
 	public Message getKindAvgSalaryByCity(HttpServletRequest request,HttpServletResponse response,@RequestBody Map<String,Object> parmMap) {
 		Message message = new Message();
 		//List<String> kinds = kindService.getPositionKind();
-		String[] kinds={"Java","Hadoop"};
-		//List<String> citys=positionService.getCitys(); 
-		String[] citys={"北京","上海","杭州","深圳","南京"};
+		String[] kinds={"Java","Hadoop","Python","C++","数据挖掘"};
+		List<String> citys=positionService.getCitys(); 
+		//String[] citys={"北京","上海","杭州","深圳","南京"};
 		Map<String, List<Double>> salarys= new HashMap<>();
 		for(String kind: kinds){
 			List<Double> mylist=new ArrayList<Double>();

@@ -20,5 +20,7 @@ public interface PositionDao {
 	
 	public Map<String, Object> getKAS(Map<String, Object> map);
 	
+	public List<Map<String, Object>> getASByComSize();
+	
 	
 }

@@ -21,6 +21,25 @@
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
   <link href="extends/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet">
+  
+<script src="extends/jquery-1.9.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="dist/js/app.min.js"></script>
+
+<script src="extends/datatables/media/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" charset="utf8" src="extends/datatables/extensions/Buttons/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" charset="utf8" src="extends/datatables/extensions/Buttons/js/buttons.flash.min.js"></script>
+<script type="text/javascript" charset="utf8" src="extends/datatables/extensions/Buttons/js/jszip.min.js"></script>
+<script type="text/javascript" charset="utf8" src="extends/datatables/extensions/Buttons/js/pdfmake.min.js"></script>
+<script type="text/javascript" charset="utf8" src="extends/datatables/extensions/Buttons/js/vfs_fonts.js"></script>
+
+ <script type="text/javascript" charset="utf8" src="extends/datatables/extensions/Buttons/js/buttons.html5.min.js"></script>
+<script type="text/javascript" charset="utf8" src="extends/datatables/extensions/Buttons/js/buttons.print.min.js"></script>
+<script type="text/javascript" charset="utf8" src="extends/datatables/extensions/Buttons/js/buttons.colVis.min.js"></script>
+
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+<script src="js/dashboard.js"></script>
 </head>
 
 
@@ -160,7 +179,7 @@
               <div class="row">
 		    	<div class="col-md-12">
                 	<table id="positionTable" class="dataTable table-striped table-bordered table-condensed" style="width:100%; height:500px;">
-							     </table>
+					</table>
             	</div> 
 		    </div>         
           </div>
@@ -213,37 +232,93 @@
 	</div>
 </div>
 
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="dist/js/app.min.js"></script>
-<!-- FastClick -->
-<script src="plugins/fastclick/fastclick.js"></script>
-<!-- Sparkline -->
-<script src="plugins/sparkline/jquery.sparkline.min.js"></script>
-<!-- jvectormap -->
-<script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<!-- SlimScroll 1.3.0 -->
-<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- ChartJS 1.0.1 -->
-<script src="plugins/chartjs/Chart.min.js"></script>
+<script>
+function getAll(){
+	var kind = $("#kind").val();
+	var place=$("#place").val();
+	var s;
+	$.ajax({
+		  type: 'POST',
+		  url: 'rest/position/getAll/',
+		  data:JSON.stringify({
+			  kind:kind,
+			  place:place
+			}),
+		  success: function(result){
+			  var resultList =result.data;
+			  var tableDatas=[];//保存表数据
+				for(var i = 0;i<resultList.length; i++){
+			        tableDatas[i]={
+							'id':i+1,
+							'positionName':resultList[i].positionName,
+							'companyFullName':resultList[i].companyFullName,
+							'companySize':resultList[i].companySize,
+							'education':resultList[i].education,
+							'salary':resultList[i].salary,
+							'workYear':resultList[i].workYear,
+							'city':resultList[i].city,
+							'industryField':resultList[i].industryField,
+							'financeStage':resultList[i].financeStage
+						};	
+				}
+				initTable2('positionTable',tableDatas);
+		  },
+		  dataType: "json",
+		  contentType:"application/json"
+	});
+}
 
-<script src="extends/datatables/media/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" charset="utf8" src="extends/datatables/extensions/Buttons/js/dataTables.buttons.min.js"></script>
-<script type="text/javascript" charset="utf8" src="extends/datatables/extensions/Buttons/js/buttons.flash.min.js"></script>
-<script type="text/javascript" charset="utf8" src="extends/datatables/extensions/Buttons/js/jszip.min.js"></script>
-<script type="text/javascript" charset="utf8" src="extends/datatables/extensions/Buttons/js/pdfmake.min.js"></script>
-<script type="text/javascript" charset="utf8" src="extends/datatables/extensions/Buttons/js/vfs_fonts.js"></script>
-
-<script type="text/javascript" charset="utf8" src="extends/datatables/extensions/Buttons/js/buttons.html5.min.js"></script>
-<script type="text/javascript" charset="utf8" src="extends/datatables/extensions/Buttons/js/buttons.print.min.js"></script>
-<script type="text/javascript" charset="utf8" src="extends/datatables/extensions/Buttons/js/buttons.colVis.min.js"></script>
-
-
-
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
-<script src="js/dashboard.js"></script>
-
+function initTable2(elem,tableDatas){
+	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) { $($.fn.dataTable.tables(true)).DataTable().columns.adjust(); });
+	var tableDatas=tableDatas;
+	var lengthMenu;
+	lengthMenu=[10];
+	buttons= [
+        /* 'copy', 'csv', 'excel', 'pdf' */
+    ];
+	table=$("#positionTable").DataTable({
+		dom: 'Bfrt<"pageclass"p><"infoclass"i>',
+		buttons:buttons,
+        sScrollX: "100%",   //表格的宽度
+		scrollX:true,//设置滚动
+		scollY:true,//设置滚动
+		destroy: true,
+		retrieve:true,
+		ordering: true,
+		searching: true,//开启搜索
+        info: false,//是否显示左下角信息
+        bLengthChange: true, //改变每页显示数据数量
+        autoWidth: true,//自动宽度
+		pagingType: "full",
+		orderFixed:true,//高亮排序的列
+		"lengthMenu": lengthMenu,
+		stripeClasses: [ 'strip1', 'strip2' ],
+		columns: [
+			{ title:"编号","data": "id" , "className": "dt-center"},
+			{ title:"职位名称","data": "positionName" , "className": "dt-center"},
+			{ title:"公司名称","data": "companyFullName" , "className": "dt-center" },
+			{ title:"公司规模","data": "companySize" , "className": "dt-center" },
+			{ title:"教育水平","data": "education" , "className": "dt-center" },
+			{ title:"薪资范围","data": "salary" , "className": "dt-center" },
+			{ title:"工作经验","data": "workYear" , "className": "dt-center" },
+			{ title:"城市","data": "city" , "className": "dt-center" },
+			{ title:"服务领域","data": "industryField" , "className": "dt-center" },
+			{ title:"融资情况","data": "financeStage" , "className": "dt-center" }
+		],
+		data: tableDatas,
+		language: {
+			info: "显示第 _PAGE_ 页，一共 _PAGES_ 页",
+			emptyTable: "无数据",
+			zeroRecords:    "无匹配结果",
+			paginate: {
+				first:      "首页",
+				previous:   "上一页",
+				next:       "下一页",
+				last:       "尾页"
+			}
+		}		
+    });
+}
+</script>
 </body>
 </html>

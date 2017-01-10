@@ -38,4 +38,8 @@ public class PositionService {
 		return positionDao.getAll(parmMap);
 	}
 	
+	public List<Map<String, Object>> getASByComSize(){
+		return positionDao.getASByComSize();
+	}
+	
 }

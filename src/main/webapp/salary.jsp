@@ -19,6 +19,11 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+  <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="dist/js/app.min.js"></script>
+<script src="plugins/echarts/echarts.js"></script>
+<script src="js/salary.js"></script>
 </head>
 
 
@@ -35,15 +40,55 @@
 		        <li class="active">Salary</li>
 		      </ol>
 		    </section>
-		    <section class="content">xinshui lalal</section>
+		    <section class="content">
+		    	
+		    	<!-- tab1 -->
+		    	<div class="row">
+		    		<div class="col-xs-8">
+	          			<div class="box box-primary">
+	            			<div class="box-header with-border">
+		              			<i class="fa fa-bar-chart-o"></i>
+		              			<h3 class="box-title">不同公司规模的平均薪资如何</h3>
+<!-- 					            <div class="col-xs-2 input-group input-group-sm" style="float:right">
+					                <select id="kind" class="form-control select2"></select>
+					                    <span class="input-group-btn">
+					                      <button type="button" class="btn btn-info btn-flat" onclick="">Go!</button>
+					                    </span>
+					             </div>	 -->
+	            			</div>
+	           				<div class="box-body">
+	              				<div id="bubble1" style="height: 400px;"></div>
+	            			</div>
+	          			</div>
+	       			 </div>	 
+	       			 <div class="col-xs-4">
+	          			<div class="box box-primary">
+	            			<div class="box-header with-border">
+		              			<i class="fa fa-bar-chart-o"></i>
+		              			<h3 class="box-title">不同职位需求量</h3>
+	            			</div>
+	           				<div class="box-body">
+	              				<div id="pie1" style="height: 400px;"></div>
+	            			</div>
+	          			</div>
+	       			 </div>	     
+	       			 
+	       			 <div class="col-xs-12">
+	          			<div class="box box-primary">
+	            			<div class="box-header with-border">
+		              			<i class="fa fa-bar-chart-o"></i>
+		              			<h3 class="box-title">不同职位需求量</h3>
+	            			</div>
+	           				<div class="box-body">
+	              				<div id="pie1" style="height: 400px;"></div>
+	            			</div>
+	          			</div>
+	       			 </div>	  	
+		    	</div>
+		    </section>
 		</div>
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 </div>
-
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="dist/js/app.min.js"></script>
-
 </body>
 </html>
